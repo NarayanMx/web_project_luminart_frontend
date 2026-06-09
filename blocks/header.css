@@ -1,0 +1,93 @@
+.header{
+margin-top: 45px;
+max-width: 880px;
+height: 74px;
+margin-left: auto;
+margin-right: auto;
+border-bottom: solid #545454 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header__user{
+display: flex;
+ align-items: center;
+  gap: 20px;
+}
+
+.header__nav {
+display: flex;
+gap: 20px;
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+letter-spacing: 0%;
+text-align: right;
+text-decoration: none; 
+color: #FFFFFF;
+}
+
+.header__link{
+  font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+letter-spacing: 0%;
+text-align: right;
+text-decoration: none; 
+color: #FFFFFF;
+}
+
+.header__email{
+  font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+letter-spacing: 0%;
+text-align: right;
+text-decoration: none; 
+color: #FFFFFF;
+
+}
+
+
+.header__logout{
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+background-color: black;
+border: none;
+color: #A9A9A9;
+line-height: 22px;
+letter-spacing: 0%;
+text-align: right;
+}
+
+
+
+@media screen and (max-width: 880px){
+
+.header{
+margin-top: 45px;
+width: 100vw;
+}
+
+.header__logo{
+width: 126px;
+margin-left: 27px;
+}
+
+.header__nav {
+margin-right:50px;
+}
+
+.header__user{
+margin-right: 40px;
+}
+
+}
+
+
