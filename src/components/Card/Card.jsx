@@ -1,66 +1,50 @@
 import React from "react";
 import ImagePopup from "../ImagePopup/ImagePopup";
-import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-import likeOnIcon from "../../../images/like_on.png";
-import likeOffIcon from "../../../images/like_off.jpg";
+import bookmarkOnIcon from "../../../images/bookmark_on.png";
+import bookmarkOffIcon from "../../../images/bookmark_off.png";
 
-function Card ({card, handleOpenPopup, onCardLike}) {
+function Card ({ card, handleOpenPopup, onCardSave, saveArtIds }) {
+  const { title, artist, date, image } = card;
 
-  const { currentUser } = React.useContext(CurrentUserContext);
-
-  const { name, link, } = card;
-
-  const isLikedByMe = card.likes && card.likes.some((id) => id === currentUser._id);
+  const isSaved = saveArtIds && saveArtIds.includes(card.id);
 
   const imageComponent = {
     title: null,
     children: <ImagePopup card={card} />
   };
 
-  function handleCardDelete() {
-    onCardDelete(card);
-  }
-
   return (
-
-    <li className="card"> 
-      <img 
-        src={link} 
-        alt={name} 
-        className="card__image"
-        onClick={() => handleOpenPopup(imageComponent)} 
-      />
-
-      <button 
-        className="card__delete-button" 
-        aria-label="Delete card"
-        onClick={handleCardDelete}> 
-        {/* 2. Reemplazamos el string estático por la variable importada */}
-        <img 
-          src={trashButtonIcon}
-          alt="botón eliminar activado"
-        />
-      </button>
+    <li className="card">
+      <div className="card__image-container">
+        <img
+          src={image}
+          alt={`Obra de arte titulada ${title} por ${artist}`}
+          className="card__image"
+          onClick={() => handleOpenPopup(imageComponent)}
+        />  
+      </div>
 
       <div className="card__description">
-
-        <h2 className="card__title">{name}</h2>
+        <div className="card__info-block">
+          <h2 className="card__title">{title}</h2>
+          <p className="card__artist">{artist}</p>
+          <span className="card__date">{date}</span>
+        </div>
 
         <button 
-          className="card__like-button" 
-          aria-label="Like card"
-          onClick={() => onCardLike(card)}>  
-          {/* 3. Reemplazamos la condición lógica por las variables dinámicas del import */}
-          <img 
-            src={isLikedByMe ? likeOnIcon : likeOffIcon}
-            alt="botón me gusta" 
-            className="card__like-image"
+          className="card__save-button"
+          aria-label="Guardar en mi colección"
+          onClick={() => onCardSave(card)}
+        >
+          <img
+            src={isSaved ? bookmarkOnIcon : bookmarkOffIcon}
+            alt={isSaved ? "Obra guardada" : "Guardar obra"}
+            className="card__save-image"
           />
         </button>
       </div>
     </li>
-
   );
 }
 
