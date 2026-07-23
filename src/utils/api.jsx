@@ -1,5 +1,5 @@
 class MetApi {
-  cosntructor({ baseUrl }) {
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
   }
 
@@ -10,9 +10,9 @@ _checkResponse(res) {
   return Promise.reject(`Error en la petición: ${res.status}`);
 }
 
-searchArtwoks(keyword) {
+searchArtworks(keyword) {
   return fetch(
-    `${this._baseUrl}/search?q=${encodeURIComponent(keyword)}&hasImage=true`
+    `${this._baseUrl}/search?q=${encodeURIComponent(keyword)}&hasImages=true`
   ).then(this._checkResponse);
 }
 
@@ -21,7 +21,7 @@ getArtworkById(id) {
 }
 
 async searchAndFetchArtworks(keyword, limit = 9 ) {
-  const searchData = await this.searchAndFetchArtworks(keyword);
+  const searchData = await this.searchArtworks(keyword);
 
   if (!searchData.objectIDs || searchData.objectIDs.length === 0) {
     return [];
@@ -38,7 +38,7 @@ async searchAndFetchArtworks(keyword, limit = 9 ) {
       title: data.title || "Obra sin título",
       artist: data.artistDisplayName || "Artista desconocido",
       date: data.objectDate || "Fecha no registrada",
-      image: data.primaryImageSmall || statusbar.primaryImage,
+      image: data.primaryImageSmall || data.primaryImage,
       medium: data.medium || "",
       culture: data.culture || "",
     };
