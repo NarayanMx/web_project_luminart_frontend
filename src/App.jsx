@@ -124,7 +124,7 @@ function App() {
     navigate ("/signin");
   };
 
-  const savedArtIds = savedArtworks.map((art) => art.id);
+  const saveArtIds = savedArtworks.map((art) => art.id);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
