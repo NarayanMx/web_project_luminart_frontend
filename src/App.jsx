@@ -1,0 +1,181 @@
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+
+import Header from "../Header/Header.jsx";
+import Card from "../Card/Card.jsx";
+import Footer from "../Footer/Footer.jsx";
+import Main from "../Main/Main.jsx";
+import NavBar from "../NavBar/NavBar.jsx";
+import NotFound from "../NotFound/NotFound.jsx";
+import Preloader from "../Preloader/Preloader.jsx";
+import Profile from "../Profile/Profile.jsx";
+import Register from "../Register/Register.jsx";
+import Login from "../Login/Login.jsx";
+import SearchForm from "../SearchForm/SearchForm.jsx";
+import ImagePopup from "../ImagePopup/ImagePopup.jsx";
+
+import metApi from "../../utils/api.jsx";
+import * as auth from "../../utils/auth.jsx";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+
+function ProtectedRoute({ loggedIn, children }) {
+  return loggedIn ? children : <Navigate to="/signin" replace/>;
+}
+
+function App() {
+  const navigate = useNavigate();
+
+  const [currentUser, setCurrentUser] = useState({ email: ""});
+  const [loggedIn, setLoggedIn] = useState(false);
+  
+  const [ artworks, setArtworks] = useState([]);
+  const [savedArtworks, setSavedArtworks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchError, setSearchError] = useState("");
+
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("luminart_token");
+    if (token) {
+      auth
+      .checkToken(token)
+      .then((res) => {
+        if (res && res.data) {
+          setLoggedIn(true);
+          setCurrentUser({ email: res.data.email });
+        }
+      })
+      .catch((err) => console.error("Sesión expirada o inválida:", err));
+    }
+
+    const storedSavedArt = localStorage.getItem("luminart_saved_art");
+    if (storedSavedArt) {
+      try {
+        setSavedArtworks(JSON.parse(storedSavedArt));
+      } catch (e) {
+        console.error("Error leyendo colección de localStorage", e);
+      }
+    }
+  }, []);
+
+
+  const handleSearchSubmit = (keyword) => {
+    setIsLoading(true);
+    setSearchError("");
+
+    metApi
+    .searchAndFetchArtworks(keyword)
+    .then((artList) => {
+      setArtworks(artList);
+      if (artList.length === 0) {
+        setSearchError("No se encontraron obras para esta búsqueda");
+      }
+    })
+    .catch((err) => {
+      console.error("Error al consultar el MET:", err);
+      setSearchError("Ocurrió un error al conectar con el servidor del museo");
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+  };
+
+  const handleCardSave = (art) => {
+    const isSaved = savedArtworks.some((item) => item.id === art.id);
+    let updatedCollection;
+
+    if (isSaved) {
+      updatedCollection = savedArtworks.filter((item) => item.id !== art.id);
+    } else {
+      updatedCollection = [art, ...savedArtworks];
+    }
+
+    setSavedArtworks(updatedCollection);
+    localStorage.setItem("luminart_saved_art", JSON.stringify(updatedCollection));
+  };
+  
+  
+  const handleRegister = (email, password) => {
+    auth.register(email, password)
+    .then(() => {
+      navigate("/signin");
+    })
+    .catch((err) => alert(err));
+  };
+
+  const handleLogin = (email, password) => {
+    auth
+    .login(email, password)
+    .then((res) => {
+      if (res.token) {
+        setLoggedIn(true);
+        setCurrentUser({ email: res.user.email });
+        navigate("/");
+      }
+    })
+    .catch((err) => alert(err));
+  };
+
+  const handleLogOut = () => {
+    auth.logout();
+    setLoggedIn(false);
+    setCurrentUser({ email: "" });
+    navigate ("/signin");
+  };
+
+  const savedArtIds = savedArtworks.map((art) => art.id);
+
+  return (
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <Header email={currentUser.email} loggedIn={loggedIn} onLogOut={handleLogOut} />
+
+        <main className="content">
+          <Routes>
+
+            <Route
+              path="/"
+              element={<Main
+                        artworks={artworks}
+                        onSearchSubmit={handleSearchSubmit}
+                        isLoading={isLoading}
+                        searchError={searchError}
+                        onOpenPopup={setSelectedCard}
+                        onCardSave={handleCardSave}
+                        saveArtIds={saveArtIds}
+                        />
+              }
+            />
+
+            <Route
+              path="/coleccion"
+              element={
+                <ProtectedRoute loggedIn={loggedIn}>
+                  <Profile
+                    email={currentUser.email}
+                    savedArtworks={savedArtworks}
+                    onCardSave={handleCardSave}
+                    saveArtIds={saveArtIds}
+                    onOpenPopup={setSelectedCard}
+                    />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<Register onRegister={handleRegister} />} />
+            <Route path="*" element={<NotFound />} />
+
+          </Routes>
+        </main>
+
+        <Footer />
+
+        <ImagePopup card={selectedCard} onClose={() => setSelectedCard(null)} />
+      </div>
+    </CurrentUserContext.Provider>
+  );
+}
+
+export default App;
