@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
-import Header from "../Header/Header.jsx";
-import Card from "../Card/Card.jsx";
-import Footer from "../Footer/Footer.jsx";
-import Main from "../Main/Main.jsx";
-import NavBar from "../NavBar/NavBar.jsx";
-import NotFound from "../NotFound/NotFound.jsx";
-import Preloader from "../Preloader/Preloader.jsx";
-import Profile from "../Profile/Profile.jsx";
-import Register from "../Register/Register.jsx";
-import Login from "../Login/Login.jsx";
-import SearchForm from "../SearchForm/SearchForm.jsx";
-import ImagePopup from "../ImagePopup/ImagePopup.jsx";
+import Header from "./components/Header/Header.jsx";
+import Card from "./components/Card/Card.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import Main from "./components/Main/Main.jsx";
+import NavBar from "./components/NavBar/NavBar.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
+import Preloader from "./components/Preloader/Preloader.jsx";
+import Profile from "./components/Profile/Profile.jsx";
+import Register from "./components/Register/Register.jsx";
+import Login from "./components/Login/Login.jsx";
+import SearchForm from "./components/SearchForm/SearchForm.jsx";
+import ImagePopup from "./components/ImagePopup/ImagePopup.jsx";
 
-import metApi from "../../utils/api.jsx";
-import * as auth from "../../utils/auth.jsx";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import metApi from "./utils/api.jsx";
+import * as auth from "./utils/auth.jsx";
+import { CurrentUserContext } from "./contexts/CurrentUserContext.js";
 
 function ProtectedRoute({ loggedIn, children }) {
   return loggedIn ? children : <Navigate to="/signin" replace/>;
