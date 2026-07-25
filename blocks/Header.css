@@ -1,0 +1,127 @@
+.header {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background-color: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.header__logo-link:hover {
+  opacity: 0.85;
+}
+
+.header__title {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.625rem; 
+  letter-spacing: 0.25em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff 40%, var(--accent-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+
+.header__user-zone {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__email {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+
+.header__link {
+  font-size: 0.938rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.header__link:hover {
+  color: var(--accent-gold);
+}
+
+
+.header__link_type_watchlist {
+  color: var(--accent-gold);
+  border: 1px solid rgba(226, 177, 68, 0.3);
+  background-color: rgba(226, 177, 68, 0.05);
+}
+
+.header__link_type_watchlist:hover {
+  background-color: rgba(226, 177, 68, 0.15);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold-hover);
+}
+
+
+.header__logout-button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.header__logout-button:hover {
+  color: #ef4444; 
+}
+
+
+@media screen and (max-width: 650px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .header__title {
+    font-size: 1.35rem;
+    letter-spacing: 0.2em;
+  }
+
+  .header__user-zone {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .header__email {
+    font-size: 0.8rem;
+  }
+}
