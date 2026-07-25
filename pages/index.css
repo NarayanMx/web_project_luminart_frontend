@@ -1,17 +1,15 @@
-/*
 @import url("../vendor/normalize.css");
 @import url("../vendor/fonts.css");
 @import url("../blocks/page.css");
-@import url("../blocks/header.css");
-@import url("../blocks/profile.css");
-@import url("../blocks/elements.css");
-@import url("../blocks/footer.css");
-@import url("../blocks/popup.css");
-@import url("../blocks/popupImg.css");
-@import url("../blocks/display.css");
-@import url("../blocks/display.css");
-@import url("../blocks/infoToolTip.css");
-@import url("../blocks/login.css");
-@import url("../blocks/register.css");
-*/
-
+@import url("../blocks/Card.css");
+@import url("../blocks/Footer.css");
+@import url("../blocks/Header.css");
+@import url("../blocks/ImagePopup.css");
+@import url("../blocks/Login.css");
+@import url("../blocks/Main.css");
+@import url("../blocks/NavBar.css");
+@import url("../blocks/NotFound.css");
+@import url("../blocks/Preloader.css");
+@import url("../blocks/Profile.css");
+@import url("../blocks/Register.css");
+@import url("../blocks/SearchForm.css");
