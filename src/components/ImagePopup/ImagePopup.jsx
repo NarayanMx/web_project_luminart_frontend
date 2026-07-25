@@ -1,17 +1,29 @@
 import React from "react";
 
-function ImagePopup({ card }) {
+function ImagePopup({ card, onClose }) {
 
-  const { title, artist, date, image } = card;
+  if (!card) return null;
+
+  const { title = "", artist = "", date = "", image = "" } = card || {};
 
   return (
-    <div className="popup-display">
+    <div className={`popup-display ${card ? "popup-display_is-opened" : ""}`}>
       <div className="popup-display__image-container">
+
+        <button
+          type="button"
+          className="popup-display__close-button"
+          onClick={onClose}
+        />
+
+        <div className="popup-display__image-container">
         <img 
           src={image} 
           alt={`Visualización en alta resolución de: ${title}`} 
           className="popup-display__image"
         />
+        </div>
+
       </div>
       
       <div className="popup-display__caption">
