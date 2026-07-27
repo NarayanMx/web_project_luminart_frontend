@@ -1,0 +1,56 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.preloader__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.preloader__spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(226, 177, 68, 0.15);
+  border-radius: 50%;
+  border-top-color: var(--accent-gold);
+  border-right-color: var(--accent-gold);
+  animation: spin 1s infinite linear;
+  box-shadow: 0 0 15px rgba(226, 177, 68, 0.2);
+}
+
+.preloader__text {
+  font-family: var(--font-sans);
+  font-size: 0.938rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin: 0;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}

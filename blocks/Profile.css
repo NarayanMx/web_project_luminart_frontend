@@ -1,0 +1,135 @@
+.profile {
+  width: 100%;
+  padding: 40px 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.profile__info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 24px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile__info-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.profile__title {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.profile__subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.profile__email {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.profile__stats {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+}
+
+.profile__stat-count {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--accent-gold);
+}
+
+.profile__stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.profile__collection {
+  width: 100%;
+}
+
+.profile__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: rgba(30, 30, 30, 0.4);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+}
+
+.profile__empty-text {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.profile__empty-hint {
+  font-size: 0.938rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.artworks__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .profile {
+    padding: 24px 0 40px;
+    gap: 32px;
+  }
+
+  .profile__title {
+    font-size: 1.5rem;
+  }
+
+  .profile__stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    border-radius: 12px;
+  }
+
+  .artworks__list {
+    grid-template-columns: 1fr;
+  }
+}
