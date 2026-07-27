@@ -1,0 +1,80 @@
+.footer {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #cccccc;
+  padding: 32px 20px;
+  margin-top: auto; /* Permite fijar el footer abajo en layouts Flexbox */
+  box-sizing: border-box;
+  border-top: 1px solid #2a2a2a;
+}
+
+.footer__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer__copyright {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #888888;
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer__item {
+  display: inline-block;
+}
+
+.footer__link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.footer__link:hover {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.footer__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Media Query para pantallas medianas y grandes (Desktop / Tablet) */
+@media screen and (min-width: 600px) {
+  .footer {
+    padding: 24px 40px;
+  }
+
+  .footer__container {
+    flex-direction: row; /* Alinea copyright a la izquierda y navegación a la derecha */
+  }
+
+  .footer__copyright {
+    text-align: left;
+  }
+}

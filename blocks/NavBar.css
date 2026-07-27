@@ -1,0 +1,107 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+/* Zona de usuario autenticado */
+.navbar__user-zone {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Zona de navegación sin sesión (Auth) */
+.navbar__auth-zone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mostrar correo electrónico del usuario */
+.navbar__email {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Enlaces generales de navegación */
+.navbar__link {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.navbar__link:hover {
+  background-color: #f0f0f0;
+}
+
+.navbar__link:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Estilo destacado opcional para 'Mi Colección' */
+.navbar__link_type_collection {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+}
+
+.navbar__link_type_collection:hover {
+  background-color: #e8e8e8;
+}
+
+/* Botón de Cerrar Sesión */
+.navbar__logout-button {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #888888;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  outline: none;
+}
+
+.navbar__logout-button:hover {
+  color: #e53935; /* Rojo suave para acción de salida */
+  background-color: rgba(229, 57, 53, 0.08);
+}
+
+.navbar__logout-button:focus-visible {
+  outline: 2px solid #e53935;
+  outline-offset: 2px;
+}
+
+/* Ajustes Responsivos (Celulares y pantallas pequeñas) */
+@media screen and (max-width: 640px) {
+  .navbar__user-zone {
+    gap: 12px;
+  }
+
+  .navbar__email {
+    display: none; /* Oculta el e-mail en pantallas muy estrechas para evitar saturar el header */
+  }
+
+  .navbar__link {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .navbar__logout-button {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+}

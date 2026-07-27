@@ -1,0 +1,141 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px); /* Centra verticalmente descontando nav/footer */
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.login__container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__title {
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.login__subtitle {
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #666666;
+  margin: 0 0 28px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Formulario */
+.login__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+}
+
+.login__input::placeholder {
+  color: #a0a0a0;
+}
+
+.login__input:focus {
+  border-color: #1a1a1a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+}
+
+/* Botón de Submit */
+.login__button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.login__button:hover {
+  background-color: #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login__button:active {
+  transform: scale(0.98);
+}
+
+.login__button:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Texto de navegación a Signup */
+.login__text {
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 24px 0 0 0;
+  text-align: center;
+}
+
+.login__link {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.login__link:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+
+.login__link:focus-visible {
+  outline: 2px solid #1a1a1a;
+  border-radius: 2px;
+}
+
+/* Ajuste Responsivo */
+@media screen and (max-width: 480px) {
+  .login__container {
+    padding: 32px 20px;
+    box-shadow: none;
+    border: 1px solid #eee;
+  }
+
+  .login__title {
+    font-size: 1.4rem;
+  }
+}
