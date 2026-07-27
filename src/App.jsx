@@ -32,6 +32,7 @@ function App() {
   const [savedArtworks, setSavedArtworks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [currentKeyword, setCurrentKeyword] = useState("");
 
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -79,6 +80,7 @@ function App() {
   const handleSearchSubmit = (keyword) => {
     setIsLoading(true);
     setSearchError("");
+    setCurrentKeyword(keyword);
 
     metApi
     .searchAndFetchArtworks(keyword)
@@ -140,6 +142,29 @@ function App() {
     navigate ("/signin");
   };
 
+  const handleShowMore = () => {
+    setIsLoading(true);
+
+    const fetchMorePromise = currentKeyword
+      ? metApi.searchAndFetchArtworks(currentKeyword, artworks.length + 6)
+      : metApi.getRandomArtworks(6);
+
+    fetchMorePromise
+      .then((newCards) => {
+        setArtworks((prevArtworks) => {
+          const existingIds = new Set(prevArtworks.map((art) => art.id));
+          const filteredNewCards = newCards.filter((art) => !existingIds.has(art.id));
+          return [...prevArtworks, ...filteredNewCards];
+        });
+      })
+      .catch((err) => {
+        console.error("Error al cargar más obras:", err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   const saveArtIds = savedArtworks.map((art) => art.id);
 
   return (
@@ -156,6 +181,8 @@ function App() {
                         artworks={artworks}
                         onSearchSubmit={handleSearchSubmit}
                         isLoading={isLoading}
+                        hasMore={artworks.length > 0}
+                        onShowMore={handleShowMore}
                         searchError={searchError}
                         onOpenPopup={setSelectedCard}
                         onCardSave={handleCardSave}

@@ -18,12 +18,21 @@ class MetApi {
 
   searchArtworks(keyword) {
     return fetch(
-      `${this._baseUrl}/search?q=${encodeURIComponent(keyword)}&hasImages=true`
+      `${this._baseUrl}/search?q=${encodeURIComponent(keyword)}&hasImages=true`,
+      {
+        headers: {
+          "Accept": "application/json",
+        },
+      }
     ).then(this._checkResponse);
   }
 
   getArtworkById(id) {
-    return fetch(`${this._baseUrl}/objects/${id}`).then(this._checkResponse);
+    return fetch(`${this._baseUrl}/objects/${id}`, {
+      headers: {
+        "Accept": "application/json",
+      },
+    }).then(this._checkResponse);
   }
 
   async _fetchArtworksFromIds(ids) {

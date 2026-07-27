@@ -130,13 +130,13 @@
   font-weight: 500;
   margin-left: 6px;
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
 .register__link:hover {
   color: var(--accent-gold-hover);
   text-decoration: underline;
 }
-
 
 @media screen and (max-width: 480px) {
   .register {
