@@ -60,6 +60,22 @@ function App() {
   }, []);
 
 
+  useEffect(() => {
+    setIsLoading(true);
+    metApi
+    .getRandomArtworks(6)
+    .then((initialCards) => {
+      setArtworks(initialCards);
+    })
+    .catch((err) => {
+      console.error("Error al cargar obras iniciales:", err);
+      setSearchError("No se pudieron cargar las obras de la galería inicial");
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+  }, []);
+
   const handleSearchSubmit = (keyword) => {
     setIsLoading(true);
     setSearchError("");

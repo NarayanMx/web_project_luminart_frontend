@@ -1,18 +1,12 @@
 import React from "react";
-import ImagePopup from "../ImagePopup/ImagePopup";
 
 import bookmarkOnIcon from "../../../images/bookmark_on.png";
-import bookmarkOffIcon from "../../../images/bookmark_off.png";
+import bookmarkOffIcon from "../../../images/bookmark_off.jpg";
 
-function Card ({ card, handleOpenPopup, onCardSave, saveArtIds }) {
+function Card({ card, handleOpenPopup, onCardSave, saveArtIds }) {
   const { title, artist, date, image } = card;
 
   const isSaved = saveArtIds && saveArtIds.includes(card.id);
-
-  const imageComponent = {
-    title: null,
-    children: <ImagePopup card={card} />
-  };
 
   return (
     <li className="card">
@@ -21,8 +15,8 @@ function Card ({ card, handleOpenPopup, onCardSave, saveArtIds }) {
           src={image}
           alt={`Obra de arte titulada ${title} por ${artist}`}
           className="card__image"
-          onClick={() => handleOpenPopup(imageComponent)}
-        />  
+          onClick={() => handleOpenPopup(card)} /* 👈 Le pasamos el objeto 'card' completo a App */
+        />
       </div>
 
       <div className="card__description">
