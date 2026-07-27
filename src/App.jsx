@@ -13,6 +13,7 @@ import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import SearchForm from "./components/SearchForm/SearchForm.jsx";
 import ImagePopup from "./components/ImagePopup/ImagePopup.jsx";
+import About from "./components/About/About.jsx";
 
 import metApi from "./utils/api.jsx";
 import * as auth from "./utils/auth.jsx";
@@ -208,6 +209,7 @@ function App() {
 
             <Route path="/signin" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<Register onRegister={handleRegister} />} />
+            <Route path="/about" element={<About/>} />
             <Route path="*" element={<NotFound />} />
 
           </Routes>

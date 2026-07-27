@@ -21,6 +21,7 @@
           
           <nav className="footer__nav">
             <ul className="footer__links">
+
               <li className="footer__item">
                 <a 
                   href="https://metmuseum.org" 
@@ -31,9 +32,15 @@
                   The MET API
                 </a>
               </li>
+
               <li className="footer__item">
                 <Link to="/" className="footer__link" onClick={handleScrollToTop}>Inicio</Link>
               </li>
+
+              <li className="footer__item">
+                <Link to="/about" className="footer__link" onClick={handleScrollToTop}>Acerca del autor</Link>
+              </li>
+
             </ul>
           </nav>
         </div>
