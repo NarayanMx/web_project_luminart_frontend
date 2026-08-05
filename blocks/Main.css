@@ -1,0 +1,99 @@
+.main-content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px 60px 20px;
+  box-sizing: border-box;
+  flex-grow: 1; /* Permite empujar el footer hacia abajo */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Sección contenedora de obras de arte */
+.artworks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Grid para renderizar las tarjetas */
+.artworks__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px 24px;
+  justify-items: center;
+}
+
+/* Contenedor del botón "Mostrar más" */
+.artworks__more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 16px;
+}
+
+/* Botón "Mostrar más" */
+.artworks__more-button {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 30px;
+  padding: 14px 36px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  outline: none;
+}
+
+.artworks__more-button:hover:not(:disabled) {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.artworks__more-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.artworks__more-button:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+/* Estado deshabilitado mientras se cargan más obras */
+.artworks__more-button:disabled {
+  border-color: #cccccc;
+  color: #888888;
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Ajustes Responsivos */
+@media screen and (max-width: 600px) {
+  .main-content {
+    padding: 20px 16px 40px 16px;
+    gap: 28px;
+  }
+
+  .artworks__list {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px 16px;
+  }
+
+  .artworks__more-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 24px;
+  }
+}
