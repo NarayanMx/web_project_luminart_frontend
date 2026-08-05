@@ -1,19 +1,19 @@
 /* Modificadores de Vendor (en la raíz) */
-@import url("./vendor/normalize.css");
-@import url("./vendor/fonts.css");
+@import url("./../vendor/normalize.css");
+@import url("./../vendor/fonts.css");
 
 /* Bloques CSS (en la raíz) */
-@import url("../blocks/page.css");
-@import url("../blocks/Card.css");
-@import url("../blocks/Footer.css");
-@import url("../blocks/Header.css");
-@import url("../blocks/ImagePopup.css");
-@import url("../blocks/Login.css");
-@import url("../blocks/Main.css");
-@import url("../blocks/NavBar.css");
-@import url("../blocks/NotFound.css");
-@import url("../blocks/Preloader.css");
-@import url("../blocks/Profile.css");
-@import url("../blocks/Register.css");
-@import url("../blocks/SearchForm.css");
-@import url("../blocks/About.css");
+@import url("./components/Page/page.css");
+@import url("./components/Card/Card.css");
+@import url("./components/Footer/Footer.css");
+@import url("./components/Header/Header.css");
+@import url("./components/ImagePopup/ImagePopup.css");
+@import url("./components/Login/Login.css");
+@import url("./components/Main/Main.css");
+@import url("./components/NavBar/NavBar.css");
+@import url("./components/NotFound/NotFound.css");
+@import url("./components/Preloader/Preloader.css");
+@import url("./components/Profile/Profile.css");
+@import url("./components/Register/Register.css");
+@import url("./components/SearchForm/SearchForm.css");
+@import url("./components/About/About.css");
