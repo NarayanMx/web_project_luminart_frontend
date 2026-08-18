@@ -1,28 +1,44 @@
-# 🎨 Luminart — El arte que ilumina
+# 🎨 Luminart — Galería de Arte Interactiva
 
-**Luminart** es una aplicación web interactiva desarrollada con **React** que permite a los usuarios explorar la vasta colección del **Museo Metropolitano de Arte de Nueva York (The MET)**. La plataforma ofrece una experiencia inmersiva para descubrir obras históricas, realizar búsquedas en tiempo real, visualizar detalles en alta resolución y gestionar una colección personal de obras favoritas.
-
----
-
-## 🚀 Funcionalidades Principales
-
-* **Galería Dinámica Inicial:** Carga automáticamente obras aleatorias al iniciar la aplicación para ofrecer una experiencia viva desde el primer segundo.
-* **Búsqueda Filtrada:** Motor de búsqueda conectado a la API del MET para explorar por artista, periodo, cultura o movimiento artístico.
-* **Paginación Progresiva:** Botón *"Descubrir más"* que acumula gradualmente más piezas en la galería sin perder de vista las anteriores.
-* **Visualización en Alta Resolución:** Modal/Popup interactivo para examinar los detalles, fechas y autoría de cada obra.
-* **Colección Personal (Favoritos):** Los usuarios registrados pueden guardar o remover obras de su galería privada con almacenamiento persistente local (`localStorage`).
-* **Autenticación de Usuarios:** Sistema funcional de Registro (`/signup`) e Inicio de Sesión (`/signin`) con rutas protegidas (`ProtectedRoute`).
-* **Sección Informativa:** Vista dedicada (`/about`) sobre el autor y los detalles técnicos del proyecto.
+Aplicación web Single Page Application (SPA) desarrollada con React que permite explorar, filtrar y guardar obras históricas en alta resolución consumiendo la API del Museo Metropolitano de Arte de Nueva York (The MET).
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🔗 Enlaces y Demostración
 
-* **React 18** (Vite / JSX)
-* **React Router DOM v6** (Enrutamiento SPA y rutas protegidas)
-* **CSS3** (Arquitectura modular basada en la metodología **BEM**)
-* **API REST:** [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io/)
-* **Local Storage API** (Persistencia de datos del lado del cliente)
-* **Git / GitHub** (Control de versiones y flujo de trabajo colaborativo)
+* **Demostración en vivo (Live Demo):[https://narayanmx.github.io/web_project_luminart_frontend/]
+* **Repositorio en GitHub:** [https://github.com/NarayanMx/luminart](https://github.com/NarayanMx/luminart)
 
 ---
+
+## 🎯 Desafío (Problemática)
+
+Diseñar y desarrollar una plataforma inmersiva de alto rendimiento visual capaz de manejar y presentar datos masivos provenientes de una API externa, garantizando una navegación fluida, búsqueda dinámica por múltiples criterios y la seguridad en la persistencia de datos y rutas privadas de usuario.
+
+---
+
+## ⚙️ Proceso y Tecnologías Utilizadas
+
+El desarrollo se estructuró de forma modular bajo la metodología **BEM** para los estilos y la arquitectura de componentes de **React**:
+
+* **Frontend & SPA:** React 18, Vite, JSX, React Router DOM v6 (rutas protegidas con `ProtectedRoute`).
+* **Estilos:** CSS3 modular responsivo siguiendo la convención BEM.
+* **Integración de APIs:** Peticiones asíncronas a la REST API de *The Metropolitan Museum of Art Collection*.
+* **Persistencia & Estado:** `localStorage` para la conservación de la colección personal y sesión activa.
+
+---
+
+## 🚀 Resultado e Impacto
+
+* **Experiencia de Usuario Fluida:** Galería dinámica inicial de carga aleatoria y paginación acumulativa (*"Descubrir más"*) que optimiza los tiempos de respuesta.
+* **Motor de Búsqueda Completo:** Filtrado en tiempo real por artista, periodo, cultura o movimiento artístico.
+* **Gestión de Colección Personal:** Espacio privado para guardar y remover obras favoritas sin pérdida de estado tras recargar la página.
+* **Seguridad y Control de Acceso:** Sistema completo de Autenticación (`/signup` y `/signin`) restringiendo vistas privadas únicamente a usuarios autenticados.
+
+---
+
+## 🛠️ Funcionalidades Clave
+
+* **Galería Viva:** Carga de piezas de forma aleatoria al iniciar la aplicación.
+* **Visualización en Alta Resolución:** Modal interactivo para detalles técnicos, autoría y fechas.
+* **Rutas Protegidas:** Componentes envolventes que resguardan el acceso a secciones de usuario.
